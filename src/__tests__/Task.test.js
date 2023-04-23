@@ -9,8 +9,9 @@ test("displays the task text", () => {
 });
 
 test("displays the task category", () => {
-  render(<Task text={"text!"} category={"category!"} />);
-  expect(screen.queryByText("category!")).toBeInTheDocument();
+  const sampleTask = { id: 1, text: "text!", category: "category!" };
+  render(<Task task={sampleTask} />);
+  expect(screen.getByText("category!", { selector: '.label' })).toBeInTheDocument();
 });
 
 test("is removed from the list when the delete button is clicked", () => {
